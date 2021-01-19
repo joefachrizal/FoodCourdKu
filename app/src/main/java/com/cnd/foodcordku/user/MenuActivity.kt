@@ -117,7 +117,7 @@ class MenuActivity : AppCompatActivity() {
         menuAdapter.setOnItemClickCallback(object : MenuAdapter.OnItemClickCallback {
             override fun onClicked(data: DataMenu) {
                 jmlhStok = data.stokMakanan?.toInt() ?: 0
-                if (jmlhStok.toString() != "0") {
+                if (jmlhStok > 0 || Data.akses == "admin") {
                     name_food_pop.text = data.titleFood
                     price_food_pop.text = formatRupiah.format(data.price?.toDouble())
                     description_pop.text = data.description
@@ -145,10 +145,9 @@ class MenuActivity : AppCompatActivity() {
                     sumFood()
                     onKeranjang()
                 } else {
-                    MaterialAlertDialogBuilder(this@MenuActivity)
-                        .setTitle("Perhatian..")
-                        .setMessage("Sayangnya Stok Sudah Habis...\nSilahkan pilih menu yang tersedia")
-                        .show()
+                    val title = "Perhatian.."
+                    val message = "Sayangnya Stok Sudah Habis...\nSilahkan pilih menu yang tersedia"
+                    onDialog(title, message)
                 }
             }
         })
@@ -187,21 +186,27 @@ class MenuActivity : AppCompatActivity() {
     private fun onKeranjang() {
         keranjang.setOnClickListener {
             if (Data.akses != "admin") {
-                Data.jumlahPesanan = jmlh.toString()
-                Data.hargaPesanan = total
-                if (jmlh > 0) {
-                    submitMenu(
-                        DataTemp(
-                            Data.namaPesanan,
-                            Data.jumlahPesanan,
-                            Data.hargaPesanan
+                val sisaStock = jmlhStok - jmlh
+                if (sisaStock >= 0) {
+                    Data.jumlahPesanan = jmlh.toString()
+                    Data.hargaPesanan = total
+                    if (jmlh > 0) {
+                        submitMenu(
+                            DataTemp(
+                                Data.namaPesanan,
+                                Data.jumlahPesanan,
+                                Data.hargaPesanan
+                            )
                         )
-                    )
-                    val sisaStock = jmlhStok - jmlh
-                    myRef.child(Data.MENU).child(Data.key).child("stokMakanan")
-                        .setValue(sisaStock.toString())
+                        myRef.child(Data.MENU).child(Data.key).child("stokMakanan")
+                            .setValue(sisaStock.toString())
+                    } else {
+                        Toast.makeText(this, "Tidak bisa Memproses", Toast.LENGTH_SHORT).show()
+                    }
                 } else {
-                    Toast.makeText(this, "Tidak bisa Memproses", Toast.LENGTH_SHORT).show()
+                    val title = "Perhatian.."
+                    val message = "Stok Melebihi Batas"
+                    onDialog(title, message)
                 }
             } else {
                 myRef.child(Data.MENU).child(Data.key).child("stokMakanan")
@@ -246,5 +251,12 @@ class MenuActivity : AppCompatActivity() {
             val i = Intent(this, KeranjangActivity::class.java)
             this.startActivity(i)
         }
+    }
+
+    private fun onDialog(tittle: String, message: String) {
+        MaterialAlertDialogBuilder(this)
+            .setTitle(tittle)
+            .setMessage(message)
+            .show()
     }
 }

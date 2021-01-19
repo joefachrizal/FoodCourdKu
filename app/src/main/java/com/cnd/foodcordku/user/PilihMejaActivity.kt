@@ -48,14 +48,11 @@ class PilihMejaActivity : AppCompatActivity() {
         })
 
         binding.btnMeja.setOnClickListener {
-//            Toast.makeText(this, "$dataUser", Toast.LENGTH_SHORT).show()
 
             if (dataUser.isNullOrEmpty() || dataUser.isNullOrBlank() || dataUser == "null") {
                 startScanning()
                 Data.takeAway = "No"
                 Data.idUser = userId
-
-//                Data.ID = "1"
             } else {
                 MaterialAlertDialogBuilder(this)
                     .setTitle("Perhatian..")
@@ -77,8 +74,6 @@ class PilihMejaActivity : AppCompatActivity() {
             startScanning()
             Data.takeAway = "yes"
             Data.idUser = userId
-
-//            Data.ID = "2"
         }
 
         binding.btnAdmin.setOnClickListener {
