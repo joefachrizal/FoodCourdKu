@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="green">#ff669900</color>
+    <color name="brown">#572924</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="grey">#B1B1B1</color>
+    <color name="textColor">#ff669900</color>
+    <color name="latarFocus">#FFF9F1E5</color>
+    <color name="latarPutih">#FFFDFDFE</color>
+
+    <color name="barcode_reticle_background">#99000000</color>
+    <color name="barcode_reticle_stroke">#ffffff</color>
+</resources>

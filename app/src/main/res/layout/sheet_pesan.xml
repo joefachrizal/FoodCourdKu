@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sheet_pesan"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/latarFocus"
+    android:orientation="vertical"
+    android:padding="16dp"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="56dp"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/pesan"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:text="Keranjang"
+        android:textColor="@color/textColor"
+        app:backgroundTint="@color/brown"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:rippleColor="@color/green" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Foodcord Ku</string>
+    <string name="turn_flash_on_off">Turn Flash On/Off</string>
+    <string name="comment_to_reset">Tambah Ke Keranjang</string>
+    <string name="comment_back_to">Balik Ke menu</string>
+</resources>

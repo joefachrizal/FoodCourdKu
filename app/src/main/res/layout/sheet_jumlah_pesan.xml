@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/sheet_jum_pesan"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/latarFocus"
+    android:padding="16dp"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="56dp"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+    <TextView
+        android:id="@+id/name_food_pop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Order Details"
+        android:textColor="@color/brown"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/price_food_pop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:text="₹435.00"
+        android:textColor="@color/textColor"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/name_food_pop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/name_food_pop" />
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="2dp"
+        android:text="Deskripsi Makanan"
+        android:textColor="@color/brown"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/description_pop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name_food_pop" />
+
+    <TextView
+        android:id="@+id/description_pop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="1dp"
+        android:text="Flat No 404, Skyline Apartments, Vizag - 500576"
+        android:textColor="@color/textColor"
+        app:layout_constraintBottom_toTopOf="@+id/min"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/min"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/button_background"
+        android:text="-"
+        android:textColor="@color/textColor"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/jumlah"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/description_pop"
+        app:rippleColor="@color/brown" />
+
+    <TextView
+        android:id="@+id/jumlah"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        android:text="0"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/min"
+        app:layout_constraintEnd_toStartOf="@+id/max"
+        app:layout_constraintStart_toEndOf="@+id/min"
+        app:layout_constraintTop_toTopOf="@+id/min" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/max"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/button_background"
+        android:text="+"
+        android:textColor="@color/textColor"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/min"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/jumlah"
+        app:layout_constraintTop_toTopOf="@+id/min"
+        app:rippleColor="@color/brown" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/keranjang"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginTop="30dp"
+        android:text="Tambah Ke Keranjang"
+        android:textColor="@color/textColor"
+        app:backgroundTint="@color/brown"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/min"
+        app:rippleColor="@color/green" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

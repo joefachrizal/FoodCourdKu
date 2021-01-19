@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/frame_makanan"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/foto_makanan"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/green"
+                android:scaleType="center" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <TextView
+            android:id="@+id/judul_makanan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_toEndOf="@+id/frame_makanan"
+            android:text="Paket 1"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/frame_makanan"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/frame_makanan"
+            app:layout_constraintTop_toTopOf="@+id/frame_makanan"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/harga_makanan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="4dp"
+            android:text="0"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/judul_makanan"
+            app:layout_constraintTop_toBottomOf="@+id/judul_makanan" />
+
+        <TextView
+            android:id="@+id/text_makanan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="Stok "
+            android:textColor="@color/green"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/harga_makanan"
+            app:layout_constraintEnd_toStartOf="@+id/stok_makanan"
+            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintStart_toEndOf="@+id/harga_makanan"
+            app:layout_constraintTop_toBottomOf="@+id/judul_makanan" />
+
+        <TextView
+            android:id="@+id/stok_makanan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="0"
+            android:textColor="@color/green"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/harga_makanan"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintStart_toEndOf="@+id/harga_makanan"
+            app:layout_constraintTop_toBottomOf="@+id/judul_makanan" />
+
+        <TextView
+            android:id="@+id/nama_otlte"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/judul_makanan"
+            android:layout_marginTop="4dp"
+            android:layout_toEndOf="@+id/frame_makanan"
+            android:text="nama Otlet"
+            app:layout_constraintStart_toStartOf="@+id/judul_makanan"
+            app:layout_constraintTop_toBottomOf="@+id/harga_makanan" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="0dp"
+            android:layout_height="5dp"
+            android:layout_marginTop="8dp"
+            android:layerType="software"
+            android:src="@drawable/dotted"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/judul_makanan"
+            app:layout_constraintTop_toBottomOf="@+id/nama_otlte" />
+
+        <TextView
+            android:id="@+id/deskripsi_makanan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/judul_makanan"
+            android:layout_marginTop="8dp"
+            android:layout_toEndOf="@+id/frame_makanan"
+            android:maxLines="2"
+            android:text="penjelasan makanan"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/judul_makanan"
+            app:layout_constraintTop_toBottomOf="@+id/imageView4"
+            app:layout_constraintVertical_bias="0.0" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
