@@ -38,25 +38,31 @@ class PemesanAdapter(private var dataList: ArrayList<DataPemesan>) :
             val formatRupiah: NumberFormat = NumberFormat.getCurrencyInstance(localeID)
 
             with(binding) {
-                namaPemesan.text =item.pemesan
+                namaPemesan.text = item.pemesan
                 hargaMakanan.text = formatRupiah.format(item.hargaBayar?.toDouble())
-                banyakPesanan.text =item.banyakPesanan
-                statusPesanan.text =item.statusPesanan
-                statusBayar.text =item.statusBayar
+                banyakPesanan.text = item.banyakPesanan
+                statusBayar.text = item.statusBayar
+
+                val textStatus = if (item.statusPesanan == "ok") {
+                    "Diproses"
+                } else {
+                    "Dalam Antrian"
+                }
+                statusPesanan.text = textStatus
 
                 switchPesan.isOn = item.statusPesanan != "pending"
 
                 switchPesan.setOnToggledListener { _, isOn ->
-                    if (isOn){
+                    if (isOn) {
                         Toast.makeText(itemView.context, "ok", Toast.LENGTH_SHORT).show()
-                        onItemClickCallback.onSlide(item,"ok")
-                    } else{
+                        onItemClickCallback.onSlide(item, "ok")
+                    } else {
                         Toast.makeText(itemView.context, "tidak ok", Toast.LENGTH_SHORT).show()
-                        onItemClickCallback.onSlide(item,"pending")
+                        onItemClickCallback.onSlide(item, "pending")
                     }
                 }
 
-                if (item.statusBayar == "lunas"){
+                if (item.statusBayar == "lunas") {
                     okStatus.setBackgroundResource(R.color.textColor)
                 }
                 itemView.setOnClickListener {
