@@ -15,6 +15,7 @@ import com.cnd.foodcordku.model.DataMenu
 import com.cnd.foodcordku.model.DataTemp
 import com.cnd.foodcordku.util.Data
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.item_loading.*
 import kotlinx.android.synthetic.main.sheet_jumlah_pesan.*
@@ -115,33 +116,40 @@ class MenuActivity : AppCompatActivity() {
 
         menuAdapter.setOnItemClickCallback(object : MenuAdapter.OnItemClickCallback {
             override fun onClicked(data: DataMenu) {
-                name_food_pop.text = data.titleFood
-                price_food_pop.text = formatRupiah.format(data.price?.toDouble())
-                description_pop.text = data.description
-                harga = data.price.toString()
                 jmlhStok = data.stokMakanan?.toInt() ?: 0
-                Data.key = data.keyMakanan.toString()
-//                Toast.makeText(this@MenuActivity, "$jmlhStok buah ${data.titleFood} di klik", Toast.LENGTH_SHORT).show()
-                val state =
-                    if (sheetJumPesan.state != BottomSheetBehavior.STATE_EXPANDED)
-                        BottomSheetBehavior.STATE_EXPANDED
-                    else
-                        BottomSheetBehavior.STATE_HIDDEN
-                sheetJumPesan.state = state
+                if (jmlhStok.toString() != "0") {
+                    name_food_pop.text = data.titleFood
+                    price_food_pop.text = formatRupiah.format(data.price?.toDouble())
+                    description_pop.text = data.description
+                    harga = data.price.toString()
+                    Data.key = data.keyMakanan.toString()
 
-                if (Data.akses != "admin") {
-                    jmlh = 0 // reset to 0
-                    keranjang.text = getString(R.string.comment_to_reset)
-                    Data.namaPesanan = data.titleFood.toString()
+                    val state =
+                        if (sheetJumPesan.state != BottomSheetBehavior.STATE_EXPANDED)
+                            BottomSheetBehavior.STATE_EXPANDED
+                        else
+                            BottomSheetBehavior.STATE_HIDDEN
+                    sheetJumPesan.state = state
+
+                    if (Data.akses != "admin") {
+                        jmlh = 0 // reset to 0
+                        keranjang.text = getString(R.string.comment_to_reset)
+                        Data.namaPesanan = data.titleFood.toString()
+                    } else {
+                        jmlh = data.stokMakanan?.toInt() ?: 0
+                        keranjang.text = "tambah Stok"
+                    }
+                    jumlah.text = jmlh.toString()
+
+                    subFood()
+                    sumFood()
+                    onKeranjang()
                 } else {
-                    jmlh = data.stokMakanan?.toInt() ?: 0
-                    keranjang.text = "tambah Stok"
+                    MaterialAlertDialogBuilder(this@MenuActivity)
+                        .setTitle("Perhatian..")
+                        .setMessage("Sayangnya Stok Sudah Habis...\nSilahkan pilih menu yang tersedia")
+                        .show()
                 }
-                jumlah.text = jmlh.toString()
-
-                subFood()
-                sumFood()
-                onKeranjang()
             }
         })
     }
@@ -190,13 +198,14 @@ class MenuActivity : AppCompatActivity() {
                         )
                     )
                     val sisaStock = jmlhStok - jmlh
-//                    Toast.makeText(this@MenuActivity, "$sisaStock sisanya", Toast.LENGTH_SHORT).show()
-                    myRef.child(Data.MENU).child(Data.key).child("stokMakanan").setValue(sisaStock.toString())
+                    myRef.child(Data.MENU).child(Data.key).child("stokMakanan")
+                        .setValue(sisaStock.toString())
                 } else {
                     Toast.makeText(this, "Tidak bisa Memproses", Toast.LENGTH_SHORT).show()
                 }
-            }else{
-                myRef.child(Data.MENU).child(Data.key).child("stokMakanan").setValue(jmlh.toString())
+            } else {
+                myRef.child(Data.MENU).child(Data.key).child("stokMakanan")
+                    .setValue(jmlh.toString())
             }
         }
     }
