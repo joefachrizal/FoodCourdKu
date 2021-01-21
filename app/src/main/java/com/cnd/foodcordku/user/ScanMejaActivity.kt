@@ -79,6 +79,7 @@ class ScanMejaActivity : AppCompatActivity() {
 
         val preview: Preview = Preview.Builder()
             .build()
+
         val cameraSelector: CameraSelector = CameraSelector.Builder()
             .requireLensFacing(CameraSelector.LENS_FACING_BACK)
             .build()
@@ -121,7 +122,6 @@ class ScanMejaActivity : AppCompatActivity() {
                                 .show()
                         } else {
                             Data.ID = it
-//                            Toast.makeText(this@ScanMejaActivity, "$kode $nama", Toast.LENGTH_SHORT).show()
                             val i = Intent(this@ScanMejaActivity, MenuActivity::class.java)
                             startActivity(i)
                             finish()
