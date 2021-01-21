@@ -32,7 +32,6 @@ class InputMenuActivity : AppCompatActivity() {
         val price = binding.hargaMakanan.text.toString()
         val desc = binding.deskripsiMakanan.text.toString()
         val image = binding.inputUrlGambar.text.toString()
-        val otlet = binding.otletMakanan.text.toString()
         val key = myRef.push().key.toString()
 
         if (titleFood.isEmpty()) {
@@ -46,9 +45,6 @@ class InputMenuActivity : AppCompatActivity() {
         }
         if (image.isEmpty()) {
             binding.inputUrlGambar.error = "tidak boleh kosong"
-        }
-        if (otlet.isEmpty()) {
-            binding.otletMakanan.error = "tidak boleh kosong"
         } else {
             onPushData(
                 DataMenu(
@@ -57,7 +53,7 @@ class InputMenuActivity : AppCompatActivity() {
                     desc,
                     "5",
                     key,
-                    otlet,
+                    "moga bunda resto",
                     image
                 )
             )
@@ -73,7 +69,6 @@ class InputMenuActivity : AppCompatActivity() {
                 binding.hargaMakanan.setText("")
                 binding.deskripsiMakanan.setText("")
                 binding.inputUrlGambar.setText("")
-                binding.otletMakanan.setText("")
                 Snackbar.make(
                     binding.proses,
                     "Data berhasil ditambahkan",
