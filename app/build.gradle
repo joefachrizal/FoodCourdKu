@@ -5,6 +5,7 @@ plugins {
     id 'kotlin-android-extensions'
     id 'kotlin-kapt'
 }
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
@@ -26,6 +27,7 @@ android {
         cleanedAnnotations
         compile.exclude group: 'org.jetbrains', module: 'annotations'
     }
+
     lintOptions {
         checkReleaseBuilds false
         abortOnError false
@@ -47,6 +49,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8
     }
@@ -89,7 +92,6 @@ dependencies {
 
     /* buat UI/UX */
     implementation 'de.hdodenhof:circleimageview:3.1.0'
-//    implementation 'com.airbnb.android:lottie:3.6.0'
     implementation 'com.airbnb.android:lottie:2.7.0'
     implementation 'com.github.angads25:toggle:1.1.0'
 
